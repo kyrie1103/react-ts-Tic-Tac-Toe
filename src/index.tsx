@@ -1,3 +1,4 @@
+import { Button } from 'antd';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css'
@@ -118,6 +119,7 @@ class Square extends React.Component<SquarePropsType,StateType> {
             stepNumber:0,
         }
     }
+
     render() { 
     const history = this.state.history; 
     const current = history[this.state.stepNumber];
@@ -126,8 +128,8 @@ class Square extends React.Component<SquarePropsType,StateType> {
     const moves = history.map((step,move)=>{
         const desc = move ? 'Go to move #' + move : 'Go to game start';
         return (
-            <li key={move}>
-                <button onClick={()=>this.jumpTo(move)}>{desc}</button>
+            <li key={move} >
+              <Button type='default' onClick={()=>this.jumpTo(move)}>{desc}</Button>
             </li>
         )
     })
@@ -144,7 +146,7 @@ class Square extends React.Component<SquarePropsType,StateType> {
           </div>
           <div className="game-info">
             <div>{status}</div>
-            <ol>{moves}</ol>
+            <ul>{moves}</ul>
           </div>
         </div>
       );
